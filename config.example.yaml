@@ -1,0 +1,49 @@
+# Copy to config.yaml and edit with your real details.
+profile:
+  name: "Aarav"
+  company: "Northstar Studio"
+  offer: "we build simple websites that bring local businesses more calls"
+  website: "https://northstar.example"
+  location: "Indore, India"
+  signature: |-
+    Best,
+    Aarav
+    Northstar Studio
+  physical_address: "Indore, Madhya Pradesh, India"
+
+targets:
+  - source: maps
+    query: "dentist"
+    location: "Indore, India"
+    limit: 20
+  - source: maps
+    query: "home interior designer"
+    location: "Indore, India"
+    limit: 20
+  # Export a LinkedIn / Sales Navigator search to CSV, then list it here.
+  # Automated scraping of LinkedIn search results is not supported.
+  - source: linkedin_csv
+    path: "input/linkedin.csv"
+
+limits:
+  daily_send_cap: 25          # hard cap per 24h
+  min_delay_seconds: 120      # spacing between sends
+  send_window: "09:00-18:00"  # local business hours only
+  timezone: "Asia/Kolkata"
+  auto_approve_high_confidence: false
+
+sourcing:
+  allow_generic_email: false   # info@ / hello@ found on a site
+  allow_guessed_email: false   # pattern-guessed addresses (never sent by default)
+
+llm:
+  enabled: false               # false = free built-in templates
+  base_url: "https://api.openai.com/v1"
+  model: "gpt-4o-mini"
+  api_key_env: "LLM_API_KEY"
+  max_tokens: 350
+
+storage:
+  db: "data/leads.db"
+  output_dir: "output"
+  input_dir: "input"

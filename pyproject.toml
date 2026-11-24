@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "client-finder-agent"
+version = "0.1.0"
+description = "Find local clients, draft personal outreach and send approved emails through Gmail"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Client Finder Agent contributors" }]
+keywords = ["lead-generation", "outreach", "gmail", "google-places", "automation"]
+dependencies = [
+  "requests>=2.31",
+  "beautifulsoup4>=4.12",
+  "PyYAML>=6.0",
+  "click>=8.1",
+  "python-dotenv>=1.0",
+  "google-auth>=2.25",
+  "google-auth-oauthlib>=1.2",
+  "google-api-python-client>=2.100",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+client-finder-agent = "cfagent.cli:main"
+
+[tool.setuptools]
+packages = ["cfagent"]
